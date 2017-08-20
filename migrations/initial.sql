@@ -10,4 +10,15 @@ CREATE TABLE users
 CREATE UNIQUE INDEX users_email_uindex
   ON users (email);
 CREATE UNIQUE INDEX users_id_uindex
-  ON users (id)
+  ON users (id);
+
+CREATE TABLE locations
+(
+  id       INT PRIMARY KEY NOT NULL,
+  place    TEXT            NOT NULL,
+  country  VARCHAR(50)     NOT NULL,
+  city     VARCHAR(50)     NOT NULL,
+  distance INT             NOT NULL
+);
+CREATE UNIQUE INDEX locations_id_uindex
+  ON locations (id);
