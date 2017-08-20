@@ -1,17 +1,6 @@
-from apistar import Include, Route
 from apistar.frameworks.asyncio import ASyncIOApp as App
-from apistar.handlers import docs_urls, static_urls
 
-
-async def welcome():
-    return {'message': 'Welcome to API Star!'}
-
-
-routes = [
-    Route('/', 'GET', welcome),
-    Include('/docs', docs_urls),
-    Include('/static', static_urls)
-]
+from routes import routes
 
 app = App(routes=routes)
 
