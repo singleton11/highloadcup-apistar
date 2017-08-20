@@ -1,0 +1,150 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "51d83d39c91a958aaaa30697569978a6a74f6e2de4d0653bc18e2451fc1e8841"
+        },
+        "requires": {},
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "aioodbc": {
+            "version": "==0.2.0"
+        },
+        "apistar": {
+            "version": "==0.2.1"
+        },
+        "asyncio-redis": {
+            "version": "==0.14.3"
+        },
+        "certifi": {
+            "version": "==2017.7.27.1"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
+        "coreapi": {
+            "version": "==2.3.1"
+        },
+        "coreschema": {
+            "version": "==0.0.4"
+        },
+        "gunicorn": {
+            "version": "==19.7.1"
+        },
+        "httptools": {
+            "version": "==0.0.9"
+        },
+        "idna": {
+            "version": "==2.6"
+        },
+        "itypes": {
+            "version": "==1.1.0"
+        },
+        "jinja2": {
+            "version": "==2.9.6"
+        },
+        "markupsafe": {
+            "version": "==1.0"
+        },
+        "py": {
+            "version": "==1.4.34"
+        },
+        "pyodbc": {
+            "version": "==4.0.17"
+        },
+        "pytest": {
+            "version": "==3.2.1"
+        },
+        "requests": {
+            "version": "==2.18.4"
+        },
+        "setuptools": {
+            "version": "==36.2.7"
+        },
+        "uritemplate": {
+            "version": "==3.0.0"
+        },
+        "urllib3": {
+            "version": "==1.22"
+        },
+        "uvicorn": {
+            "version": "==0.0.15"
+        },
+        "uvitools": {
+            "version": "==0.0.4"
+        },
+        "uvloop": {
+            "version": "==0.8.0"
+        },
+        "websockets": {
+            "version": "==3.4"
+        },
+        "werkzeug": {
+            "version": "==0.12.2"
+        },
+        "whitenoise": {
+            "version": "==3.3.0"
+        }
+    },
+    "develop": {
+        "decorator": {
+            "version": "==4.1.2"
+        },
+        "ipdb": {
+            "version": "==0.10.3"
+        },
+        "ipython": {
+            "version": "==6.1.0"
+        },
+        "ipython-genutils": {
+            "version": "==0.2.0"
+        },
+        "jedi": {
+            "version": "==0.10.2"
+        },
+        "pexpect": {
+            "version": "==4.2.1"
+        },
+        "pickleshare": {
+            "version": "==0.7.4"
+        },
+        "prompt-toolkit": {
+            "version": "==1.0.15"
+        },
+        "ptyprocess": {
+            "version": "==0.5.2"
+        },
+        "py": {
+            "version": "==1.4.34"
+        },
+        "pygments": {
+            "version": "==2.2.0"
+        },
+        "pytest": {
+            "version": "==3.2.1"
+        },
+        "pytest-asyncio": {
+            "version": "==0.6.0"
+        },
+        "setuptools": {
+            "version": "==36.2.7"
+        },
+        "simplegeneric": {
+            "version": "==0.8.1"
+        },
+        "six": {
+            "version": "==1.10.0"
+        },
+        "traitlets": {
+            "version": "==4.3.2"
+        },
+        "wcwidth": {
+            "version": "==0.1.7"
+        }
+    }
+}

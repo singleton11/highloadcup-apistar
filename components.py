@@ -10,6 +10,7 @@ class DB(object):
         self.db = db
 
 
-async def initialize_db() -> asyncio.Future:
+async def initialize_db() -> DB:
     dsn: str = 'Driver=SQLite;Database=travels?mode=memory&cache=shared'
-    return await aioodbc.create_pool(dsn=dsn, loop=loop)
+    pool: asyncio.Future = await aioodbc.create_pool(dsn=dsn, loop=loop)
+    return DB(pool)

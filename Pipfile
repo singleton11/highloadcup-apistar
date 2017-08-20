@@ -2,12 +2,13 @@
 verify_ssl = true
 url = "https://pypi.python.org/simple"
 
+[packages]
+aioodbc = "*"
+
 [dev-packages]
 pytest-asyncio = "*"
 ipython = "*"
-
-[packages]
-aioodbc = "*"
+ipdb = "*"
 
 [packages.apistar]
 extras = [ "asyncio",]
