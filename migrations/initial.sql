@@ -22,3 +22,16 @@ CREATE TABLE locations
 );
 CREATE UNIQUE INDEX locations_id_uindex
   ON locations (id);
+
+CREATE TABLE visits
+(
+  id         INT PRIMARY KEY NOT NULL,
+  location   INT             NOT NULL,
+  user       INT             NOT NULL,
+  visited_at INT             NOT NULL,
+  mark       INT(1),
+  CONSTRAINT visits_locations_id_fk FOREIGN KEY (location) REFERENCES locations (id),
+  CONSTRAINT visits_users_id_fk FOREIGN KEY (user) REFERENCES users (id)
+);
+CREATE UNIQUE INDEX visits_id_uindex
+  ON visits (id);
