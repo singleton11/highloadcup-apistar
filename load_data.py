@@ -39,8 +39,8 @@ connection: sqlite3.Connection = sqlite3.connect(
 
 # Create schema
 with open('migrations/initial.sql') as f:
-    content = f.read()
-    cursor = connection.cursor()
+    content: str = f.read()
+    cursor: sqlite3.Cursor = connection.cursor()
     [cursor.execute(statement) for statement in content.split(';')]
     connection.commit()
 
