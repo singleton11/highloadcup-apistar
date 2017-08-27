@@ -1,6 +1,6 @@
 from typing import Dict, Union, List, Tuple
 
-from apistar import Response, typesystem
+from apistar import typesystem
 
 from components import DB
 
@@ -26,8 +26,8 @@ class EditUser(typesystem.Object):
     }
 
 
-def get_user(db: DB, user_id: int) -> Response:
-    data: Dict[str, Union[str, int]] = db.connection.execute(
+def get_user(db: DB, user_id: int) -> Dict[str, Union[str, int]]:
+    row: Tuple[Union[str, int]] = db.connection.execute(
         '''
 SELECT id,
        email,
@@ -40,10 +40,15 @@ WHERE  id = ?
 ''',
         (user_id,)
     ).fetchone()
-    return Response(
-        str(data).encode('utf-8'),
-        content_type='application/json;charset=utf-8',
-    )
+
+    return {
+        'id': row[0],
+        'email': row[1],
+        'first_name': row[2],
+        'last_name': row[3],
+        'gender': row[4],
+        'birth_date': row[5]
+    }
 
 
 def get_visits(db: DB,
@@ -51,7 +56,7 @@ def get_visits(db: DB,
                fromDate: int,
                toDate: int,
                country: str,
-               toDistance: int) -> Response:
+               toDistance: int) -> Dict[str, List[Dict[str, Union[str, int]]]]:
     params: Tuple[Union[int, str]] = (user_id,)
     query: str = f'''
 SELECT mark, 
@@ -76,18 +81,19 @@ WHERE  USER = ?
     if toDistance:
         query += ' AND distance < ?'
         params += (toDistance,)
-    data: List[Dict[str, Union[str, int]]] = db.connection.execute(
+    data: List[Tuple[Union[str, int]]] = db.connection.execute(
         query,
         params,
     ).fetchall()
-    return Response(
-        str({'visits': [{
-            'mark': el['mark'],
-            'visited_at': el['visited_at'],
-            'place': el['place']
-        } for el in data]}).encode('utf-8'),
-        content_type='application/json;charset=utf-8',
-    )
+    return {
+        'visits': [
+            {
+                'mark': el[0],
+                'visited_at': el[1],
+                'place': el[3]
+            } for el in data
+        ]
+    }
 
 
 def new_user(db: DB, user: NewUser) -> Dict:
@@ -116,5 +122,6 @@ WHERE  id = ?
       data['first_name'],
       data['last_name'],
       data['gender'],
-      data['birth_date']))
+      data['birth_date'],
+      user_id))
     return {}
