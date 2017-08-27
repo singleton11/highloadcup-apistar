@@ -1,5 +1,5 @@
 from apistar import Route, Include, Component
-from apistar.frameworks.asyncio import ASyncIOApp as App
+from apistar.frameworks.wsgi import WSGIApp as App
 from apistar.handlers import docs_urls
 
 from components import DB, initialize_db

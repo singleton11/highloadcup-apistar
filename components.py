@@ -1,16 +1,14 @@
-import asyncio
-
-import aioodbc
-
-loop = asyncio.get_event_loop()
+import sqlite3
 
 
 class DB(object):
-    def __init__(self, db: asyncio.Future):
-        self.db = db
+    def __init__(self, connection: sqlite3.Connection):
+        self.connection = connection
 
 
-async def initialize_db() -> DB:
-    dsn: str = 'Driver=SQLite;Database=travels?mode=memory&cache=shared'
-    pool: asyncio.Future = await aioodbc.create_pool(dsn=dsn, loop=loop)
-    return DB(pool)
+def initialize_db() -> DB:
+    connection: sqlite3.Connection = sqlite3.connect(
+        database='/dev/shm/travels.db',
+        check_same_thread=False,
+    )
+    return DB(connection)

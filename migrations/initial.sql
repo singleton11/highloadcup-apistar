@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
   id         INT PRIMARY KEY NOT NULL,
@@ -12,6 +13,7 @@ CREATE UNIQUE INDEX users_email_uindex
 CREATE UNIQUE INDEX users_id_uindex
   ON users (id);
 
+DROP TABLE IF EXISTS locations;
 CREATE TABLE locations
 (
   id       INT PRIMARY KEY NOT NULL,
@@ -23,6 +25,7 @@ CREATE TABLE locations
 CREATE UNIQUE INDEX locations_id_uindex
   ON locations (id);
 
+DROP TABLE IF EXISTS visits;
 CREATE TABLE visits
 (
   id         INT PRIMARY KEY NOT NULL,
