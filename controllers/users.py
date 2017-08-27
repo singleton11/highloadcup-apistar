@@ -5,13 +5,24 @@ from apistar import Response, typesystem
 from components import DB
 
 
-class User(typesystem.Object):
+class NewUser(typesystem.Object):
     properties = {
         'id': typesystem.Integer,
+        'email': typesystem.String,
         'first_name': typesystem.String,
         'last_name': typesystem.String,
         'gender': typesystem.String,
-        'birth_date': typesystem.Integer
+        'birth_date': typesystem.Integer,
+    }
+
+
+class EditUser(typesystem.Object):
+    properties = {
+        'email': typesystem.String,
+        'first_name': typesystem.String,
+        'last_name': typesystem.String,
+        'gender': typesystem.String,
+        'birth_date': typesystem.Integer,
     }
 
 
@@ -19,6 +30,7 @@ def get_user(db: DB, user_id: int) -> Response:
     data: Dict[str, Union[str, int]] = db.connection.execute(
         '''
 SELECT id,
+       email,
        first_name,
        last_name,
        gender,
@@ -75,5 +87,34 @@ WHERE  USER = ?
             'place': el['place']
         } for el in data]}).encode('utf-8'),
         content_type='application/json;charset=utf-8',
-        status=200 if len(data) else 404,
     )
+
+
+def new_user(db: DB, user: NewUser) -> Dict:
+    data: NewUser = NewUser(user)
+    db.connection.execute('INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)',
+                          (data['id'],
+                           data['email'],
+                           data['first_name'],
+                           data['last_name'],
+                           data['gender'],
+                           data['birth_date']))
+    return {}
+
+
+def update_user(db: DB, user_id: int, user: EditUser) -> Dict:
+    data: EditUser = EditUser(user)
+    db.connection.execute('''
+UPDATE users 
+SET    email = ?, 
+       first_name = ?, 
+       last_name = ?, 
+       gender = ?, 
+       birth_date = ? 
+WHERE  id = ? 
+''', (data['email'],
+      data['first_name'],
+      data['last_name'],
+      data['gender'],
+      data['birth_date']))
+    return {}
