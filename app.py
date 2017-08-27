@@ -3,14 +3,15 @@ from apistar.frameworks.wsgi import WSGIApp as App
 from apistar.handlers import docs_urls
 
 from components import DB, initialize_db
-from controllers.users import welcome
+from controllers.users import get_user, get_visits
 
 components = [
     Component(DB, init=initialize_db)
 ]
 
 routes = [
-    Route('/', 'GET', welcome),
+    Route('/users/{user_id}', 'GET', get_user),
+    Route('/users/{user_id}/visits', 'GET', get_visits),
     Include('/docs', docs_urls),
 ]
 
