@@ -59,15 +59,16 @@ def get_visits(db: DB,
                toDistance: int) -> Dict[str, List[Dict[str, Union[str, int]]]]:
     params: Tuple[Union[int, str]] = (user_id,)
     query: str = f'''
-SELECT mark, 
-       visited_at, 
-       place, 
-       distance, 
-       country 
-FROM   visits 
-       LEFT JOIN locations 
+SELECT   mark, 
+         visited_at, 
+         locations.place, 
+         distance, 
+         country 
+FROM     visits 
+         LEFT JOIN locations 
               ON visits.location = locations.id 
-WHERE  USER = ? 
+WHERE    USER = ? 
+ORDER BY visited_at
 '''
     if fromDate:
         query += ' AND visited_at > ?'
@@ -90,7 +91,7 @@ WHERE  USER = ?
             {
                 'mark': el[0],
                 'visited_at': el[1],
-                'place': el[3]
+                'place': el[2]
             } for el in data
         ]
     })
