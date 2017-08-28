@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f7b05d6ab999c369e21235c9e085477154e8f7f5b03f59ff9225e88158c12c54"
+            "sha256": "2af68c57d1172da36e2c064d120b6dbd66d7383c3410537cdffbb8a29db1310d"
         },
         "requires": {},
         "sources": [
@@ -30,12 +30,6 @@
         "coreschema": {
             "version": "==0.0.4"
         },
-        "greenlet": {
-            "version": "==0.4.12"
-        },
-        "gunicorn": {
-            "version": "==19.7.1"
-        },
         "idna": {
             "version": "==2.6"
         },
@@ -51,9 +45,6 @@
         "markupsafe": {
             "version": "==1.0"
         },
-        "meinheld": {
-            "version": "==0.6.1"
-        },
         "py": {
             "version": "==1.4.34"
         },
@@ -67,7 +58,7 @@
             "version": "==2.18.4"
         },
         "setuptools": {
-            "version": "==36.2.7"
+            "version": "==36.3.0"
         },
         "six": {
             "version": "==1.10.0"
@@ -120,7 +111,7 @@
             "version": "==2.2.0"
         },
         "setuptools": {
-            "version": "==36.2.7"
+            "version": "==36.3.0"
         },
         "simplegeneric": {
             "version": "==0.8.1"

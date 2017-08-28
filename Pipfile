@@ -8,7 +8,6 @@ ipdb = "*"
 
 [packages]
 logzero = "*"
-meinheld = "*"
 apistar = "*"
 arrow = "*"
 uWSGI = "*"
