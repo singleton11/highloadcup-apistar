@@ -10,6 +10,5 @@ apistar = "*"
 arrow = "*"
 
 [dev-packages]
-pytest-asyncio = "*"
 ipython = "*"
 ipdb = "*"
