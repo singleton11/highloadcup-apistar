@@ -10,6 +10,7 @@ from controllers.locations import (get_location,
                                    new_location,
                                    update_location)
 from controllers.users import get_user, get_visits, new_user, update_user
+from controllers.visits import get_visit
 
 components: List[Component] = [
     Component(DB, init=initialize_db)
@@ -24,6 +25,7 @@ routes: List[Route] = [
     Route('/locations/{location_id}/avg', 'GET', get_average),
     Route('/locations/new', 'POST', new_location),
     Route('/locations/{location_id}/edit', 'POST', update_location),
+    Route('/visits/{visit_id}', 'GET', get_visit),
     Include('/docs', docs_urls),
 ]
 
