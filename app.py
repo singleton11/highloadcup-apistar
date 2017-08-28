@@ -5,8 +5,10 @@ from apistar.frameworks.wsgi import WSGIApp as App
 from apistar.handlers import docs_urls
 
 from components import DB, initialize_db
-from controllers.locations import get_location, get_average, new_location, \
-    update_location
+from controllers.locations import (get_location,
+                                   get_average,
+                                   new_location,
+                                   update_location)
 from controllers.users import get_user, get_visits, new_user, update_user
 
 components: List[Component] = [
