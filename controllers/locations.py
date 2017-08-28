@@ -1,8 +1,28 @@
 from typing import Tuple, Union, Dict
 
 import arrow
+from apistar import typesystem
 
 from components import DB
+
+
+class NewLocation(typesystem.Object):
+    properties = {
+        'id': typesystem.Integer,
+        'place': typesystem.String,
+        'country': typesystem.String,
+        'city': typesystem.String,
+        'distance': typesystem.Integer,
+    }
+
+
+class EditLocation(typesystem.Object):
+    properties = {
+        'place': typesystem.String,
+        'country': typesystem.String,
+        'city': typesystem.String,
+        'distance': typesystem.Integer,
+    }
 
 
 def get_location(db: DB, location_id: int) -> Dict[str, Union[int, str]]:
@@ -55,3 +75,31 @@ WHERE location = ?
     return {
         'avg': row[0] if row[0] else 0,
     }
+
+
+def new_location(db: DB, location: NewLocation) -> Dict:
+    data: NewLocation = NewLocation(location)
+    db.connection.execute('INSERT INTO locations VALUES (?, ?, ?, ?, ?)',
+                          (data['id'],
+                           data['place'],
+                           data['country'],
+                           data['city'],
+                           data['distance']))
+    return {}
+
+
+def update_location(db: DB, location_id: int, location: EditLocation) -> Dict:
+    data: EditLocation = EditLocation(location)
+    db.connection.execute('''
+UPDATE locations
+SET    place = ?,
+       country = ?,
+       city = ?,
+       distance = ?
+WHERE  id = ?
+    ''', (data['place'],
+          data['country'],
+          data['city'],
+          data['distance'],
+          location_id))
+    return {}
