@@ -2,13 +2,14 @@
 verify_ssl = true
 url = "https://pypi.python.org/simple"
 
-[dev-packages]
-pytest-asyncio = "*"
-ipython = "*"
-ipdb = "*"
-
 [packages]
 logzero = "*"
 gunicorn = "*"
 meinheld = "*"
 apistar = "*"
+arrow = "*"
+
+[dev-packages]
+pytest-asyncio = "*"
+ipython = "*"
+ipdb = "*"

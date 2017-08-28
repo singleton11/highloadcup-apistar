@@ -5,7 +5,7 @@ from apistar.frameworks.wsgi import WSGIApp as App
 from apistar.handlers import docs_urls
 
 from components import DB, initialize_db
-from controllers.locations import get_location
+from controllers.locations import get_location, get_average
 from controllers.users import get_user, get_visits, new_user, update_user
 
 components: List[Component] = [
@@ -18,6 +18,7 @@ routes: List[Route] = [
     Route('/users/new', 'POST', new_user),
     Route('/users/{user_id}/edit', 'POST', update_user),
     Route('/locations/{location_id}', 'GET', get_location),
+    Route('/locations/{location_id}/avg', 'GET', get_average),
     Include('/docs', docs_urls),
 ]
 
