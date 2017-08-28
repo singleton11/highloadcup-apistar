@@ -33,7 +33,7 @@ class Visit(NamedTuple):
 
 
 connection: sqlite3.Connection = sqlite3.connect(
-    database='/dev/shm/travels.db',
+    database='travels.db',
     check_same_thread=False,
 )
 
