@@ -1,7 +1,7 @@
 from typing import Tuple, Union, Dict
 
 import arrow
-from apistar import typesystem
+from apistar import typesystem, Response
 
 from components import DB
 
@@ -29,13 +29,13 @@ def get_location(db: DB, location_id: int) -> Dict[str, Union[int, str]]:
     row: Tuple[Union[str, int], ...] = db.connection.execute('''
 SELECT id, place, country, city, distance FROM locations WHERE id = ?
     ''', (location_id,)).fetchone()
-    return {
+    return Response({
         'id': row[0],
         'place': row[1],
         'country': row[2],
         'city': row[3],
         'distance': row[4],
-    }
+    })
 
 
 def get_average(db: DB,
@@ -72,9 +72,9 @@ WHERE location = ?
         params += (gender,)
     row: Tuple[float] = db.connection.execute(query, params).fetchone()
 
-    return {
+    return Response({
         'avg': row[0] if row[0] else 0,
-    }
+    })
 
 
 def new_location(db: DB, location: NewLocation) -> Dict:
@@ -85,7 +85,7 @@ def new_location(db: DB, location: NewLocation) -> Dict:
                            data['country'],
                            data['city'],
                            data['distance']))
-    return {}
+    return Response({})
 
 
 def update_location(db: DB, location_id: int, location: EditLocation) -> Dict:
@@ -102,4 +102,4 @@ WHERE  id = ?
           data['city'],
           data['distance'],
           location_id))
-    return {}
+    return Response({})

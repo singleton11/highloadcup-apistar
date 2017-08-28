@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  web:
+    build: .
+    ports:
+      - 8000:80
+    mem_limit: 512m
+    volumes:
+      - "./data/:/tmp/data/"

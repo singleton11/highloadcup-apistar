@@ -1,6 +1,6 @@
 from typing import Dict, Union, Tuple
 
-from apistar import typesystem
+from apistar import typesystem, Response
 
 from components import DB
 
@@ -28,13 +28,13 @@ def get_visit(db: DB, visit_id: int) -> Dict[str, Union[int, str]]:
     row: Tuple[Union[str, int], ...] = db.connection.execute('''
 SELECT id, location, user, visited_at, mark FROM visits WHERE id = ?
     ''', (visit_id,)).fetchone()
-    return {
+    return Response({
         'id': row[0],
         'location': row[1],
         'user': row[2],
         'visited_at': row[3],
         'mark': row[4],
-    }
+    })
 
 
 def new_visit(db: DB, visit: NewVisit) -> Dict:
@@ -45,7 +45,7 @@ def new_visit(db: DB, visit: NewVisit) -> Dict:
                            data['user'],
                            data['visited_at'],
                            data['mark']))
-    return {}
+    return Response({})
 
 
 def update_visit(db: DB, visit_id: int, visit: EditVisit) -> Dict:
@@ -62,4 +62,4 @@ WHERE id = ?
           data['visited_at'],
           data['mark'],
           visit_id))
-    return {}
+    return Response({})

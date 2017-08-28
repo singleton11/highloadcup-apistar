@@ -1,6 +1,6 @@
 from typing import Dict, Union, List, Tuple
 
-from apistar import typesystem
+from apistar import typesystem, Response
 
 from components import DB
 
@@ -41,14 +41,14 @@ WHERE  id = ?
         (user_id,)
     ).fetchone()
 
-    return {
+    return Response({
         'id': row[0],
         'email': row[1],
         'first_name': row[2],
         'last_name': row[3],
         'gender': row[4],
         'birth_date': row[5]
-    }
+    })
 
 
 def get_visits(db: DB,
@@ -85,7 +85,7 @@ WHERE  USER = ?
         query,
         params,
     ).fetchall()
-    return {
+    return Response({
         'visits': [
             {
                 'mark': el[0],
@@ -93,7 +93,7 @@ WHERE  USER = ?
                 'place': el[3]
             } for el in data
         ]
-    }
+    })
 
 
 def new_user(db: DB, user: NewUser) -> Dict:
@@ -105,7 +105,7 @@ def new_user(db: DB, user: NewUser) -> Dict:
                            data['last_name'],
                            data['gender'],
                            data['birth_date']))
-    return {}
+    return Response({})
 
 
 def update_user(db: DB, user_id: int, user: EditUser) -> Dict:
@@ -124,4 +124,4 @@ WHERE  id = ?
       data['gender'],
       data['birth_date'],
       user_id))
-    return {}
+    return Response({})
