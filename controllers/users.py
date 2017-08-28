@@ -27,7 +27,7 @@ class EditUser(typesystem.Object):
 
 
 def get_user(db: DB, user_id: int) -> Dict[str, Union[str, int]]:
-    row: Tuple[Union[str, int]] = db.connection.execute(
+    row: Tuple[Union[str, int], ...] = db.connection.execute(
         '''
 SELECT id,
        email,
