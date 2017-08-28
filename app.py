@@ -20,14 +20,14 @@ routes: List[Route] = [
     Route('/users/{user_id}', 'GET', get_user),
     Route('/users/{user_id}/visits', 'GET', get_visits),
     Route('/users/new', 'POST', new_user),
-    Route('/users/{user_id}/edit', 'POST', update_user),
+    Route('/users/{user_id}', 'POST', update_user),
     Route('/locations/{location_id}', 'GET', get_location),
     Route('/locations/{location_id}/avg', 'GET', get_average),
     Route('/locations/new', 'POST', new_location),
-    Route('/locations/{location_id}/edit', 'POST', update_location),
+    Route('/locations/{location_id}', 'POST', update_location),
     Route('/visits/{visit_id}', 'GET', get_visit),
     Route('/visits/new', 'POST', new_visit),
-    Route('/visits/{visit_id}/edit', 'POST', update_visit),
+    Route('/visits/{visit_id}', 'POST', update_visit),
     Include('/docs', docs_urls),
 ]
 
