@@ -4,10 +4,10 @@ RUN pip install pipenv
 
 WORKDIR /home/app
 
+RUN apk --no-cache add gcc musl-dev linux-headers
+
 COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
-
-RUN apk --no-cache add gcc musl-dev
 
 RUN pipenv install --system
 

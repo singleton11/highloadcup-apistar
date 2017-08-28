@@ -2,13 +2,13 @@
 verify_ssl = true
 url = "https://pypi.python.org/simple"
 
-[packages]
-logzero = "*"
-gunicorn = "*"
-meinheld = "*"
-apistar = "*"
-arrow = "*"
-
 [dev-packages]
 ipython = "*"
 ipdb = "*"
+
+[packages]
+logzero = "*"
+meinheld = "*"
+apistar = "*"
+arrow = "*"
+uWSGI = "*"

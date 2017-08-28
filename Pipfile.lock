@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a641020871deadcd15e7faafdc7b7f65e95c8dc72af79ff067ba405dfea775b4"
+            "sha256": "f7b05d6ab999c369e21235c9e085477154e8f7f5b03f59ff9225e88158c12c54"
         },
         "requires": {},
         "sources": [
@@ -77,6 +77,9 @@
         },
         "urllib3": {
             "version": "==1.22"
+        },
+        "uwsgi": {
+            "version": "==2.0.15"
         },
         "werkzeug": {
             "version": "==0.12.2"
